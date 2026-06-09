@@ -1,0 +1,29 @@
+<svg
+  viewBox="0 0 1440 280"
+  xmlns="http://www.w3.org/2000/svg"
+  preserveAspectRatio="xMidYMax meet"
+  aria-hidden="true"
+>
+  <!-- Main mountain range — a realistic, layered silhouette spanning the full width -->
+  <!-- Background peaks (slightly lower, fills edges) -->
+  <path
+    d="M0,280 L0,200 L80,155 L160,185 L240,120 L320,160 L380,90 L440,130 L520,75 L580,110 L640,60 L700,95 L760,50 L820,85 L880,40 L940,70 L1000,55 L1060,80 L1120,45 L1180,75 L1240,100 L1300,65 L1360,110 L1440,80 L1440,280 Z"
+    fill="currentColor"
+    opacity="0.4"
+  />
+  <!-- Foreground peaks (more defined, the hero ridge) -->
+  <path
+    d="M0,280 L0,240 L60,210 L120,230 L180,180 L260,210 L320,155 L400,185 L460,130 L520,160 L580,105 L640,140 L700,85 L760,120 L820,70 L880,105 L940,60 L1000,90 L1060,55 L1120,85 L1180,45 L1240,80 L1300,110 L1360,75 L1400,100 L1440,65 L1440,280 Z"
+    fill="currentColor"
+    opacity="0.7"
+  />
+  <!-- Ridge line only (for the MountainDivider component) -->
+  <path
+    id="mountain-ridge"
+    d="M0,240 L60,210 L120,230 L180,180 L260,210 L320,155 L400,185 L460,130 L520,160 L580,105 L640,140 L700,85 L760,120 L820,70 L880,105 L940,60 L1000,90 L1060,55 L1120,85 L1180,45 L1240,80 L1300,110 L1360,75 L1400,100 L1440,65"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    opacity="0.8"
+  />
+</svg>
