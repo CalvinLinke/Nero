@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@theme {
+  --color-nero-black: #363636;
+  --color-nero-anthrazit: #606060;
+  --color-nero-teal: #4a7878;
+  --color-nero-tealhell: #5e9090;
+  --color-nero-teallight: #edf4f4;
+  --color-nero-gold: #c4a35a;
+  --color-nero-beige: #e8e0d5;
+  --color-nero-offwhite: #f5f2ed;
+
+  --font-display: var(--font-playfair);
+  --font-sans: var(--font-dm-sans);
+  --font-handwriting: var(--font-dancing);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-nero-offwhite);
+  color: var(--color-nero-anthrazit);
+  font-family: var(--font-dm-sans), sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Gold arrow cursor */
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='20' viewBox='0 0 16 20'%3E%3Cpath d='M0,0 L0,14 L4,10 L6,17 L7.8,16.3 L5.8,9.5 L11,9.5 Z' fill='%23C4A35A'/%3E%3C/svg%3E") 0 0, auto;
+}
+
+a, button, [role="button"], input, textarea, select, label {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='20' viewBox='0 0 16 20'%3E%3Cpath d='M0,0 L0,14 L4,10 L6,17 L7.8,16.3 L5.8,9.5 L11,9.5 Z' fill='%23C4A35A'/%3E%3C/svg%3E") 0 0, pointer;
+}
+
+
+/* Noise texture overlay via pseudo-element */
+.noise-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Gold underline animation for nav links */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-nero-gold);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.font-handwriting {
+  font-family: var(--font-dancing), cursive;
+}
+
+/* Input underline style */
+.input-underline {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-nero-anthrazit);
+  border-radius: 0;
+  padding: 8px 0;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s ease;
+  font-family: var(--font-dm-sans), sans-serif;
+  font-weight: 300;
+}
+
+.input-underline:focus {
+  border-bottom-color: var(--color-nero-gold);
+}
+
+.input-underline::placeholder {
+  color: #999;
+}
