@@ -41,7 +41,7 @@ export default function HomePage() {
           playsInline
           className="w-full h-auto block"
         >
-          <source src="/NeroHero2.mp4" type="video/mp4" />
+          <source src="/NeroHero4.mp4" type="video/mp4" />
         </video>
       </section>
 
