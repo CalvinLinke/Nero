@@ -33,29 +33,13 @@ export default function PhilosophiePage() {
                 Langfristigkeit ist kein Versprechen. Es ist eine Konsequenz — aus der Art, wie wir unser Kapital einsetzen: in Objekte, die wir verstehen, in Regionen, die wir kennen, mit Partnern, denen wir vertrauen.
               </p>
               <p className="text-nero-anthrazit/70 font-light leading-relaxed mb-8">
-                Kapitalerhalt geht vor Wachstum. Das klingt defensiv, ist es aber nicht. Es bedeutet: Wir kaufen nicht, was billig ist. Wir kaufen, was gut ist. Und halten es. Der Unterschied ist klein in der Beschreibung und groß in der Wirkung.
+                Kapitalerhalt geht vor Wachstum. Das klingt defensiv, ist es aber nicht. Wir kaufen, was Substanz hat — Objekte, die wir verstehen, in Lagen, die wir kennen. Und wir halten sie. Das verändert, wie wir Entscheidungen treffen.
               </p>
               <p className="text-nero-anthrazit/70 font-light leading-relaxed">
                 Dealflow entsteht im Verbund — nicht durch Inserate oder Ausschreibungen. Durch Vertrauen, Netzwerk, Wiederholung. Wer einmal mit uns gearbeitet hat, weiß, wie wir Entscheidungen treffen. Und kommt wieder.
               </p>
             </AnimatedSection>
 
-            <AnimatedSection delay={0.15}>
-              <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-6 text-left">
-                {[
-                  { label: "Zeithorizont", value: "Jahrzehnte" },
-                  { label: "Priorität", value: "Kapitalerhalt" },
-                  { label: "Dealflow", value: "Im Verbund" },
-                  { label: "Entscheidungen", value: "Eigenverantwortlich" },
-                ].map((item) => (
-                  <div key={item.label} className="border-b border-nero-anthrazit/10 pb-6 pl-5 relative group">
-                    <div className="absolute left-0 top-0 w-[2px] h-0 bg-nero-gold group-hover:h-full transition-all duration-300" />
-                    <p className="text-xs tracking-[0.15em] uppercase text-nero-gold/70 mb-1 font-normal">{item.label}</p>
-                    <p className="font-display text-xl text-nero-anthrazit group-hover:text-nero-gold transition-colors duration-200">{item.value}</p>
-                  </div>
-                ))}
-              </div>
-            </AnimatedSection>
           </div>
         </div>
       </section>
