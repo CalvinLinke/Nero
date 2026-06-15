@@ -50,7 +50,7 @@ export default function Footer() {
             </p>
             <div className="space-y-2 text-sm text-white/50 font-light">
               <p>NERO Familienbesitz GmbH</p>
-              <p>Leipzig · Dresden</p>
+              <p>Dresden · Leipzig</p>
             </div>
           </div>
         </div>
