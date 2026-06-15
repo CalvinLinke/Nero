@@ -60,10 +60,10 @@ export default function ImmobilienPage() {
                 Unser Interesse gilt Bestandsimmobilien — fertiggestellt, verwaltet, mit Geschichte. Wohnimmobilien, Erbanteile, ausgewählte Beteiligungen. Keine Projekte auf der grünen Wiese, kein Neubau, keine Spekulation.
               </p>
               <p className="text-nero-anthrazit/70 font-light leading-relaxed mb-7">
-                Unsere Kriterien sind einfach: gute Lage in Leipzig oder im Elbtal um Dresden, Substanz im Objekt, klarer Eigentümer. Volumen und Ticketgröße kommunizieren wir nicht öffentlich — wer ein passendes Objekt hat, weiß es oder fragt uns direkt.
+                Unsere Kriterien: Lage im Elbtal um Dresden oder Leipzig, Substanz im Objekt, klarer Eigentümer. Volumen und Ticketgröße kommunizieren wir nicht öffentlich — bei konkretem Interesse sprechen wir gern direkt mit Ihnen.
               </p>
               <p className="text-nero-anthrazit/70 font-light leading-relaxed">
-                Der Ankauf erfolgt aus Eigenkapital, ergänzt durch Bankenfinanzierung. Keine langen Entscheidungswege. Kein Bieterverfahren.
+                Der Ankauf erfolgt aus Eigenkapital, ergänzt durch Bankenfinanzierung. Keine langen Entscheidungswege.
               </p>
             </AnimatedSection>
 
@@ -79,7 +79,7 @@ export default function ImmobilienPage() {
                 </div>
                 <div className="border-l border-nero-gold/40 pl-6 py-1">
                   <p className="text-xs tracking-[0.15em] uppercase text-nero-gold/70 mb-1 font-normal">Region</p>
-                  <p className="text-nero-anthrazit font-light">Leipzig · Elbtal um Dresden</p>
+                  <p className="text-nero-anthrazit font-light">Elbtal um Dresden · Leipzig</p>
                 </div>
                 <div className="border-l border-nero-gold/40 pl-6 py-1">
                   <p className="text-xs tracking-[0.15em] uppercase text-nero-gold/70 mb-1 font-normal">Finanzierung</p>
