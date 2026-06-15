@@ -5,7 +5,7 @@ import ContactForm from "@/components/ui/ContactForm";
 export const metadata: Metadata = {
   title: "Kontakt — NERO Familienbesitz GmbH",
   description:
-    "Kontaktieren Sie NERO Familienbesitz. Kein Bieterverfahren, kein langer Prozess — direkte Anfrage für qualifizierte Objekte.",
+    "Kontaktieren Sie NERO Familienbesitz. Kein langer Prozess — direkte Anfrage für qualifizierte Objekte.",
 };
 
 export default function KontaktPage() {
@@ -33,7 +33,7 @@ export default function KontaktPage() {
             <div className="md:col-span-4">
               <AnimatedSection>
                 <p className="text-nero-anthrazit/65 font-light leading-relaxed mb-12">
-                  Wir kaufen diskret. Keine Bieterverfahren, keine langen Prozesse. Wer ein Objekt hat, das zu unseren Kriterien passt, nimmt Kontakt auf. Der Rest ergibt sich schnell.
+                  Wir kaufen diskret. Keine langen Prozesse. Wer ein Objekt hat, das zu unseren Kriterien passt, nimmt Kontakt auf. Der Rest ergibt sich schnell.
                 </p>
 
                 <div className="space-y-9">
@@ -42,7 +42,7 @@ export default function KontaktPage() {
                       E-Mail
                     </p>
                     <p className="text-nero-anthrazit/55 font-light text-sm">
-                      [Bitte eintragen]
+                      hallo@nero-familienbesitz.de
                     </p>
                   </div>
                   <div>
@@ -50,7 +50,7 @@ export default function KontaktPage() {
                       Telefon
                     </p>
                     <p className="text-nero-anthrazit/55 font-light text-sm">
-                      [Bitte eintragen]
+                      0351 41899546
                     </p>
                   </div>
                   <div>
@@ -59,7 +59,8 @@ export default function KontaktPage() {
                     </p>
                     <p className="text-nero-anthrazit/55 font-light text-sm leading-relaxed">
                       NERO Familienbesitz GmbH<br />
-                      [Straße, PLZ Stadt]
+                      Pfotenhauerstraße 45<br />
+                      01307 Dresden
                     </p>
                   </div>
                 </div>
