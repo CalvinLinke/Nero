@@ -60,10 +60,10 @@ export default function UeberUnsPage() {
                 Wir sind ein privates Family Office. Was wir tun, tun wir seit Jahren — ruhig, mit eigenem Kapital und ohne Abhängigkeit von Fremdinvestoren. Das erlaubt uns, langfristig zu denken. Nicht quartalsweise. Nicht auf Druck.
               </p>
               <p className="text-nero-anthrazit/70 font-light leading-relaxed mb-7">
-                Unser Fokus ist eng und bewusst gewählt: Wohnimmobilien in Metropolregionen, die wir kennen, weil wir dort investiert und gelernt haben. Leipzig. Das Elbtal um Dresden. Märkte mit Tiefe.
+                Unser Fokus ist eng und bewusst gewählt: Wohnimmobilien in Metropolregionen, die wir kennen, weil wir dort investiert und gelernt haben. Das Elbtal um Dresden. Leipzig. Märkte mit Tiefe.
               </p>
               <p className="text-nero-anthrazit/70 font-light leading-relaxed">
-                Wir suchen keinen großen Auftritt. Wir suchen gute Objekte und verlässliche Partner — in dieser Reihenfolge.
+                Wir suchen keinen großen Auftritt. Wir suchen verlässliche Partner und gute Objekte — in dieser Reihenfolge.
               </p>
             </AnimatedSection>
 
