@@ -1,7 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import InvestmentCard from "@/components/ui/InvestmentCard";
 import AnimatedSection from "@/components/ui/AnimatedSection";
@@ -23,9 +22,6 @@ const investments = [
 
 
 export default function HomePage() {
-  const headlineRef = useRef(null);
-  const headlineInView = useInView(headlineRef, { once: true, margin: "-15%" });
-
   return (
     <>
       {/* ── Hero Video ── */}
@@ -73,7 +69,7 @@ export default function HomePage() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.0 }}
           >
-            Immobilien in Leipzig und im Elbtal um Dresden
+            IMMOBILIEN IM ELBTAL UM DRESDEN UND LEIPZIG
           </motion.p>
 
           {/* CTA */}
@@ -100,17 +96,6 @@ export default function HomePage() {
               <p className="text-xs tracking-[0.2em] uppercase text-nero-gold mb-5 font-normal">
                 Family Office
               </p>
-              <h2 ref={headlineRef} className="font-display text-3xl md:text-4xl text-nero-anthrazit leading-snug mb-8">
-                <span className="relative inline-block">
-                  Kein Dienstleister.
-                  <motion.span className="absolute bottom-0 left-0 h-[2px] w-full bg-nero-gold origin-left" initial={{ scaleX: 0 }} animate={headlineInView ? { scaleX: 1 } : {}} transition={{ duration: 0.7, delay: 1.0, ease: "easeOut" }} />
-                </span>
-                <br />
-                <span className="relative inline-block">
-                  Kein Makler.
-                  <motion.span className="absolute bottom-0 left-0 h-[2px] w-full bg-nero-gold origin-left" initial={{ scaleX: 0 }} animate={headlineInView ? { scaleX: 1 } : {}} transition={{ duration: 0.7, delay: 1.5, ease: "easeOut" }} />
-                </span>
-              </h2>
             </AnimatedSection>
             <AnimatedSection delay={0.15}>
               <p className="text-nero-anthrazit/70 font-light leading-relaxed mb-5">
@@ -159,8 +144,8 @@ export default function HomePage() {
                 Regionaler Fokus
               </p>
               <h2 className="font-display text-3xl md:text-4xl text-nero-anthrazit leading-snug mb-8">
-                Leipzig.<br />
-                Das Elbtal um Dresden.
+                Das Elbtal um Dresden.<br />
+                Leipzig.
               </h2>
               <p className="text-nero-anthrazit/60 font-light leading-relaxed mb-8">
                 Märkte, die wir kennen — weil wir dort präsent sind. Nicht weil die Daten es empfehlen, sondern weil das Vertrauen dort gewachsen ist. Regionale Verwurzelung ist kein Zufall. Sie ist Methode.
@@ -196,7 +181,7 @@ export default function HomePage() {
               Haben Sie ein Objekt, das passt?
             </h2>
             <p className="text-nero-anthrazit/55 font-light mb-12 leading-relaxed">
-              Kein Bieterverfahren. Kein langer Prozess. Wer ein Objekt hat, das zu unseren Kriterien passt, nimmt Kontakt auf.
+              Kein Bieterverfahren. Kein langer Prozess. Passt Ihr Objekt zu unseren Kriterien? Nehmen Sie Kontakt auf.
             </p>
             <Link
               href="/kontakt"
