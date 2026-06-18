@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const values = [
   {
     title: "Langfristigkeit",
-    text: "Kein Quartalsziel, kein Exit-Druck. Unser Zeithorizont misst sich in Jahrzehnten. Was wir kaufen, kaufen wir mit der Absicht zu halten — nicht mit einer Exit-Strategie im Hinterkopf.",
+    text: "Kein Quartalsziel. Unser Zeithorizont misst sich in Jahrzehnten. Was wir kaufen, kaufen wir mit der Absicht zu halten — nicht mit einer Exit-Strategie im Hinterkopf.",
   },
   {
     title: "Diskretion",
@@ -57,7 +57,7 @@ export default function UeberUnsPage() {
           <div className="max-w-3xl">
             <AnimatedSection>
               <p className="text-nero-anthrazit/70 font-light leading-relaxed text-lg mb-7">
-                Wir sind ein privates Family Office. Was wir tun, tun wir seit Jahren — ruhig, mit eigenem Kapital und ohne Abhängigkeit von Fremdinvestoren. Das erlaubt uns, langfristig zu denken. Nicht quartalsweise. Nicht auf Druck.
+                Wir sind ein privates Family Office. Was wir tun, tun wir seit Jahren — ruhig, mit eigenem Kapital und ohne Abhängigkeit von Fremdinvestoren. Das erlaubt uns, langfristig zu denken. Nicht quartalsweise.
               </p>
               <p className="text-nero-anthrazit/70 font-light leading-relaxed mb-7">
                 Unser Fokus ist eng und bewusst gewählt: Wohnimmobilien in Metropolregionen, die wir kennen, weil wir dort investiert und gelernt haben. Das Elbtal um Dresden. Leipzig. Märkte mit Tiefe.
@@ -70,7 +70,7 @@ export default function UeberUnsPage() {
             <AnimatedSection delay={0.15}>
               <div className="mt-12 pt-10 border-t border-nero-anthrazit/10">
                 <p className="font-display text-xl md:text-2xl italic text-nero-anthrazit/55 leading-relaxed">
-                  „Kein Exit-Druck. Keine Abhängigkeit. Nur Entscheidungen, die wir selbst verantworten."
+                  „Keine Abhängigkeit. Nur Entscheidungen, die wir selbst verantworten."
                 </p>
               </div>
             </AnimatedSection>

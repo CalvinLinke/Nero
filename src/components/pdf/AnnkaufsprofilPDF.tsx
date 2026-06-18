@@ -145,7 +145,7 @@ export default function AnnkaufsprofilPDF() {
 
         <View style={styles.coverBottom}>
           <Text style={styles.coverTitle}>Ankaufsprofil</Text>
-          <Text style={styles.coverTagline}>BESTANDSIMMOBILIEN · LEIPZIG · ELBTAL UM DRESDEN</Text>
+          <Text style={styles.coverTagline}>BESTANDSIMMOBILIEN · ELBTAL UM DRESDEN · LEIPZIG</Text>
           <Text style={styles.coverConfidential}>VERTRAULICH · {new Date().getFullYear()}</Text>
         </View>
       </Page>
@@ -159,7 +159,7 @@ export default function AnnkaufsprofilPDF() {
             <View style={styles.sectionDivider} />
             <Text style={styles.sectionTitle}>Region & Marktfokus</Text>
             <Text style={styles.sectionText}>
-              Unser Investmentfokus liegt auf zwei Regionen: der Metropolregion Leipzig sowie dem Elbtal um Dresden. Beide Märkte kennen wir aus langjähriger Präsenz — nicht aus Datenanalysen, sondern aus Erfahrung. Regionale Verwurzelung ist für uns keine Marketingaussage, sondern Grundlage jeder Entscheidung.
+              Unser Investmentfokus liegt auf zwei Regionen: dem Elbtal um Dresden sowie der Metropolregion Leipzig. Beide Märkte kennen wir aus langjähriger Präsenz — nicht aus Datenanalysen, sondern aus Erfahrung. Regionale Verwurzelung ist für uns keine Marketingaussage, sondern Grundlage jeder Entscheidung.
             </Text>
           </View>
 
@@ -175,22 +175,28 @@ export default function AnnkaufsprofilPDF() {
             <View style={styles.sectionDivider} />
             <Text style={styles.sectionTitle}>Ankaufskriterien</Text>
             <Text style={styles.sectionText}>
-              Unsere Kriterien: gute Lage in Leipzig oder im Elbtal um Dresden, Substanz im Objekt, klarer Eigentümer. Der Ankauf erfolgt aus Eigenkapital, ergänzt durch Bankenbeteiligung. Keine langen Entscheidungswege. Kein Bieterverfahren. Eine direkte Anfrage genügt — wir antworten schnell.
+              Unsere Kriterien: alle Lagen im Elbtal um Dresden oder in Leipzig, Substanz im Objekt, Wohnungssanierung und Leerstände möglich. Komplexe Eigentümerverhältnisse und freie Notarwahl — möglich.
             </Text>
           </View>
 
           <View style={styles.section}>
             <View style={styles.sectionDivider} />
             <Text style={styles.sectionTitle}>Ticketgröße</Text>
-            <Text style={styles.placeholder}>[Mindestgröße einzutragen]</Text>
+            <Text style={styles.sectionText}>
+              Ab 1 Wohneinheit, mindestens 30 m²{"\n"}
+              Pakete von Wohnungen: Einheiten ab 30 m², Gesamtfläche Portfolio ab 50 m²{"\n"}
+              Teileigentum mit Umwidmungsfähigkeit auf Wohnen{"\n"}
+              MFH mit max. 10 % Gewerbeanteil — WEG-geteilt bevorzugt{"\n"}
+              Erbanteile: individuell
+            </Text>
           </View>
         </View>
 
         {/* Contact Footer */}
         <View style={styles.contactFooter}>
-          <Text style={styles.contactFooterItem}>[E-Mail einzutragen]</Text>
-          <Text style={styles.contactFooterItem}>[Telefon einzutragen]</Text>
-          <Text style={styles.contactFooterItem}>[Adresse einzutragen]</Text>
+          <Text style={styles.contactFooterItem}>hallo@nero-familienbesitz.de</Text>
+          <Text style={styles.contactFooterItem}>0351 41899546</Text>
+          <Text style={styles.contactFooterItem}>Pfotenhauerstraße 45, 01307 Dresden</Text>
           <Text style={styles.contactFooterWebsite}>nero-familienbesitz.de</Text>
         </View>
       </Page>

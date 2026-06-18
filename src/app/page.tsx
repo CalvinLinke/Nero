@@ -8,7 +8,7 @@ import AnimatedSection from "@/components/ui/AnimatedSection";
 const investments = [
   {
     title: "Bestandsimmobilien",
-    text: "Wir kaufen, was steht — und halten es. Kein Exit-Druck, kein Quartalsziel. Unser Zeithorizont beginnt da, wo andere aufhören zu rechnen.",
+    text: "Wir kaufen, was steht — und halten es.",
   },
   {
     title: "Beteiligungen",
