@@ -1,4 +1,6 @@
 import type { Signal, DirSignal } from "@/lib/orakel/signals";
+import Info from "./Info";
+import { ERKLAERUNG } from "./erklaerungen";
 
 const badge = (status: string) =>
   status === "vorlaeufig" ? (
@@ -23,17 +25,18 @@ export function SpannungListe({ signals }: { signals: Signal[] }) {
         return (
           <li key={s.id} className="py-4">
             <div className="flex items-baseline justify-between gap-4">
-              <div className="text-sm font-normal text-nero-black">
-                {s.name}
+              <div className="text-base font-normal text-nero-black flex items-center flex-wrap">
+                <span>{s.name}</span>
+                <Info text={ERKLAERUNG[s.id]} label={s.name} />
                 {badge(s.status)}
                 {evidenz(s.evidence)}
               </div>
-              <div className="font-display text-xl" style={{ color }}>{v ?? "–"}</div>
+              <div className="font-display text-2xl" style={{ color }}>{v ?? "–"}</div>
             </div>
-            <div className="h-1 bg-nero-beige mt-2 mb-2 rounded-sm overflow-hidden">
+            <div className="h-1.5 bg-nero-beige mt-2 mb-3 rounded-sm overflow-hidden">
               <div className="h-full" style={{ width: `${v ?? 0}%`, background: color }} />
             </div>
-            <p className="text-sm text-nero-anthrazit/75 leading-relaxed">{s.text}</p>
+            <p className="text-[15px] text-nero-anthrazit/80 leading-relaxed">{s.text}</p>
           </li>
         );
       })}
@@ -50,20 +53,21 @@ export function NeigungListe({ signals }: { signals: DirSignal[] }) {
         return (
           <li key={d.id} className="py-4">
             <div className="flex items-baseline justify-between gap-4">
-              <div className="text-sm font-normal text-nero-black">
-                {d.name}
+              <div className="text-base font-normal text-nero-black flex items-center flex-wrap">
+                <span>{d.name}</span>
+                <Info text={ERKLAERUNG[d.id]} label={d.name} />
                 {badge(d.status)}
                 {evidenz(d.evidence)}
               </div>
-              <div className="font-display text-xl" style={{ color }}>{t == null ? "–" : (t > 0 ? "+" : "") + t.toFixed(2)}</div>
+              <div className="font-display text-2xl" style={{ color }}>{t == null ? "–" : (t > 0 ? "+" : "") + t.toFixed(2)}</div>
             </div>
-            <div className="relative h-1 bg-nero-beige mt-2 mb-2 rounded-sm">
+            <div className="relative h-1.5 bg-nero-beige mt-2 mb-3 rounded-sm">
               <div className="absolute top-0 bottom-0 left-1/2 w-px bg-nero-anthrazit/30" />
               {t != null && (
                 <div className="absolute top-0 bottom-0" style={{ left: t >= 0 ? "50%" : `${50 + t * 50}%`, width: `${Math.abs(t) * 50}%`, background: color }} />
               )}
             </div>
-            <p className="text-sm text-nero-anthrazit/75 leading-relaxed">{d.text}</p>
+            <p className="text-[15px] text-nero-anthrazit/80 leading-relaxed">{d.text}</p>
           </li>
         );
       })}
