@@ -22,15 +22,18 @@ Zeitplan (`vercel.json`, Pro-Plan nötig): jede volle Stunde, zusätzlich werkta
 und freitags 07:30 UTC (vor dem Deribit-Verfall um 08:00 UTC). Alle Funktionen laufen in Frankfurt (`fra1`),
 damit keine Börse wegen US-Adressen sperrt.
 
+## Stand der Einrichtung
+
+15.09.2026: Neon-Datenbank `nero-orakel` (Frankfurt, Free) angelegt und verbunden, Variablen gesetzt, erster
+Produktionslauf `status: ok` ohne Quellenfehler, drei Crons in Vercel sichtbar, Dashboard live erreichbar.
+
 ## Einmalige Einrichtung auf Vercel (Calvin)
 
 1. **Datenbank:** Im Vercel-Projekt unter Storage → Create Database → Neon (kostenloser Tarif) anlegen und mit dem
    Projekt verbinden. Vercel setzt dann `DATABASE_URL` automatisch. Alternativ eine eigene Neon-Datenbank und
    `ORAKEL_DATABASE_URL` setzen.
-2. **Migration einspielen** (einmalig, danach nur bei Schemaänderungen):
-   ```bash
-   ORAKEL_DATABASE_URL="postgres://…" npm run orakel:migrate
-   ```
+2. **Migration:** entfällt. Das Orakel wendet ausstehende Migrationen beim ersten Zugriff je Prozess selbst an
+   (`src/lib/orakel/db/client.ts`). `npm run orakel:migrate` bleibt als manueller Weg erhalten.
 3. **Umgebungsvariablen** im Vercel-Projekt setzen (Production):
 
    | Variable | Wert |
@@ -40,20 +43,23 @@ damit keine Börse wegen US-Adressen sperrt.
    | `ORAKEL_MAIL_TO` | `joerg.hermann@nero-familienbesitz.de` |
    | `ORAKEL_MAIL_ADMIN` | Calvins Adresse für Störungsmeldungen |
    | `ORAKEL_MAIL_FROM` | `NERO Orakel <orakel@nero-familienbesitz.de>` (erst nach Domain-Verifizierung, siehe unten) |
-   | `ORAKEL_PUBLIC_URL` | `https://nero-familienbesitz.de` |
+   | `ORAKEL_PUBLIC_URL` | `https://www.nero-familienbesitz.de` (die Domain ohne www leitet dorthin um) |
    | `RESEND_API_KEY` | vorhanden (Kontaktformular) |
    | `SOSOVALUE_API_KEY` | optional; nur nötig, falls SoSoValue die ETF-Daten irgendwann nur noch mit Key liefert |
 
    Die lokalen Werte stehen in `.env.local` (nicht im Git).
 4. **Deploy** über `main`. Danach einmal von Hand prüfen:
    ```bash
-   curl -H "Authorization: Bearer <CRON_SECRET>" https://nero-familienbesitz.de/api/orakel/cron
+   curl -L -H "Authorization: Bearer <CRON_SECRET>" https://www.nero-familienbesitz.de/api/orakel/cron
    ```
    Antwort ist ein JSON mit `status`, `errors` und den Pegeln. Dann den geheimen Link öffnen.
 
 ## Resend: Domain verifizieren
 
-Solange die Domain nicht verifiziert ist, sendet Resend nur von `onboarding@resend.dev` und nur an die
+Stand 15.09.2026, 19:40 Uhr: Domain `nero-familienbesitz.de` ist bei Resend **verifiziert**, alle drei Einträge stehen.
+`ORAKEL_MAIL_FROM` kann daher `NERO Orakel <orakel@nero-familienbesitz.de>` sein.
+
+Zur Dokumentation, falls die Domain je neu eingerichtet wird: Solange die Domain nicht verifiziert ist, sendet Resend nur von `onboarding@resend.dev` und nur an die
 Adresse des Resend-Kontos. Für Mails an Jörg müssen diese drei DNS-Einträge bei Strato für
 `nero-familienbesitz.de` gesetzt werden (Stand 15.09.2026 aus dem Resend-Konto, Domain bereits angelegt):
 
