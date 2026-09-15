@@ -40,11 +40,11 @@ export default function UeberUnsPage() {
       </section>
 
       {/* ── Bild ── */}
-      <section className="w-full h-72 md:h-[480px] overflow-hidden">
+      <section className="w-full aspect-[2/1] overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/Bild3.png"
-          alt="Klassische Fassade"
+          alt="Gepflegtes Wohnhaus im Bestand mit Grünanlage"
           className="w-full h-full object-cover"
           loading="lazy"
           decoding="async"
