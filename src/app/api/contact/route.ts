@@ -30,13 +30,19 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const contactEmail = process.env.CONTACT_EMAIL;
-    if (!contactEmail) {
+    const contactEmailRaw = process.env.CONTACT_EMAIL;
+    if (!contactEmailRaw) {
+      console.error("[contact] CONTACT_EMAIL ist nicht gesetzt.");
       return NextResponse.json(
         { error: "Server-Konfigurationsfehler." },
         { status: 500 }
       );
     }
+    // Mehrere Empfaenger mit Komma trennen; Resend erwartet eine Liste.
+    const contactEmail = contactEmailRaw
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
 
     const { error: sendError } = await resend.emails.send({
       from,
