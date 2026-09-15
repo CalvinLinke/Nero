@@ -2,8 +2,25 @@ import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
 export async function POST(req: NextRequest) {
-  const resend = new Resend(process.env.RESEND_API_KEY);
   try {
+    // Fehlender Schluessel darf nicht zum Absturz fuehren, sondern zu einer
+    // klaren Fehlermeldung im Log (Vercel: Settings -> Environment Variables).
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      console.error("[contact] RESEND_API_KEY ist nicht gesetzt.");
+      return NextResponse.json(
+        { error: "Server-Konfigurationsfehler." },
+        { status: 500 }
+      );
+    }
+    const resend = new Resend(apiKey);
+
+    // Absender muss zu einer bei Resend verifizierten Domain gehoeren.
+    // Bis nero-familienbesitz.de dort verifiziert ist, per CONTACT_FROM
+    // eine Adresse einer bereits verifizierten Domain setzen.
+    const from =
+      process.env.CONTACT_FROM || "NERO Website <website@nero-familienbesitz.de>";
+
     const { name, company, role, email, message } = await req.json();
 
     if (!name || !email || !message) {
@@ -21,8 +38,8 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    await resend.emails.send({
-      from: "NERO Website <onboarding@resend.dev>",
+    const { error: sendError } = await resend.emails.send({
+      from,
       to: contactEmail,
       replyTo: email,
       subject: `Neue Kontaktanfrage — ${name}${role ? ` · ${role}` : ""}${company ? ` (${company})` : ""}`,
@@ -56,6 +73,15 @@ export async function POST(req: NextRequest) {
         </div>
       `,
     });
+
+    // Das SDK wirft bei Ablehnung keinen Fehler, sondern liefert ihn zurueck.
+    if (sendError) {
+      console.error("[contact] Resend hat den Versand abgelehnt:", sendError);
+      return NextResponse.json(
+        { error: "E-Mail konnte nicht versendet werden." },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
