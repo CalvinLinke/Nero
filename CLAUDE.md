@@ -229,3 +229,13 @@ zudem · darüber hinaus · letztendlich · im Wesentlichen · schlussendlich ·
 - Kontaktdaten eintragen: E-Mail, Telefon, Adresse
 - `RESEND_API_KEY` in `.env.local` setzen
 - `CONTACT_EMAIL` (Empfänger-Adresse) in `.env.local` setzen
+
+---
+
+## Krypto-Orakel (versteckter Bereich für Jörg)
+
+Stündliche Markt-Pegel für BTC/ETH unter `/orakel`, Zugang nur über geheimen Link. Betrieb, Umgebungsvariablen,
+Datenquellen und Signale stehen in `docs/ORAKEL.md`. Code unter `src/lib/orakel/`, `src/app/orakel/`,
+`src/app/api/orakel/cron/`, `src/components/orakel/`. Die Marketing-Seiten liegen in der Route-Gruppe
+`src/app/(site)/` (mit Navigation und Footer); das Orakel absichtlich nicht.
+

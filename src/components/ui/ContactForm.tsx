@@ -9,7 +9,6 @@ export default function ContactForm() {
     company: "",
     role: "",
     email: "",
-    phone: "",
     message: "",
   });
 
@@ -32,7 +31,7 @@ export default function ContactForm() {
 
       if (res.ok) {
         setStatus("success");
-        setForm({ name: "", company: "", role: "", email: "", phone: "", message: "" });
+        setForm({ name: "", company: "", role: "", email: "", message: "" });
       } else {
         setStatus("error");
       }
@@ -112,35 +111,19 @@ export default function ContactForm() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div>
-          <label className="block text-xs tracking-[0.15em] uppercase text-nero-anthrazit/50 mb-2">
-            E-Mail *
-          </label>
-          <input
-            type="email"
-            name="email"
-            required
-            value={form.email}
-            onChange={handleChange}
-            className="input-underline text-nero-anthrazit"
-            placeholder="ihre@email.de"
-          />
-        </div>
-        <div>
-          <label className="block text-xs tracking-[0.15em] uppercase text-nero-anthrazit/50 mb-2">
-            Telefon *
-          </label>
-          <input
-            type="tel"
-            name="phone"
-            required
-            value={form.phone}
-            onChange={handleChange}
-            className="input-underline text-nero-anthrazit"
-            placeholder="Ihre Telefonnummer"
-          />
-        </div>
+      <div>
+        <label className="block text-xs tracking-[0.15em] uppercase text-nero-anthrazit/50 mb-2">
+          E-Mail *
+        </label>
+        <input
+          type="email"
+          name="email"
+          required
+          value={form.email}
+          onChange={handleChange}
+          className="input-underline text-nero-anthrazit"
+          placeholder="ihre@email.de"
+        />
       </div>
 
       <div>

@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { playfair, dmSans, dancingScript } from "@/lib/fonts";
 import "./globals.css";
-import Navigation from "@/components/layout/Navigation";
-import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: "NERO Familienbesitz GmbH — Immobilien in Leipzig und Dresden",
@@ -21,11 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="de" className={`${playfair.variable} ${dmSans.variable} ${dancingScript.variable}`}>
-      <body>
-        <Navigation />
-        <main>{children}</main>
-        <Footer />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

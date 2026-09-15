@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
-import { createPropstackContact } from "@/lib/propstack";
 
 export async function POST(req: NextRequest) {
   try {
@@ -22,39 +21,22 @@ export async function POST(req: NextRequest) {
     const from =
       process.env.CONTACT_FROM || "NERO Website <website@nero-familienbesitz.de>";
 
-    const { name, company, role, email, phone, message } = await req.json();
+    const { name, company, role, email, message } = await req.json();
 
-    if (!name || !email || !phone || !message) {
+    if (!name || !email || !message) {
       return NextResponse.json(
-        { error: "Name, E-Mail, Telefon und Nachricht sind Pflichtfelder." },
+        { error: "Name, E-Mail und Nachricht sind Pflichtfelder." },
         { status: 400 }
       );
     }
 
-    const contactEmailRaw = process.env.CONTACT_EMAIL;
-    if (!contactEmailRaw) {
+    const contactEmail = process.env.CONTACT_EMAIL;
+    if (!contactEmail) {
       return NextResponse.json(
         { error: "Server-Konfigurationsfehler." },
         { status: 500 }
       );
     }
-    // Mehrere Empfaenger moeglich: in .env.local mit Komma trennen,
-    // z. B. CONTACT_EMAIL=hallo@nero-familienbesitz.de, test@example.de
-    const contactEmail = contactEmailRaw
-      .split(",")
-      .map((s) => s.trim())
-      .filter(Boolean);
-
-    // Kontakt parallel in Propstack (CRM) anlegen — Fehler dort
-    // verhindern nicht den E-Mail-Versand.
-    const propstackPromise = createPropstackContact({
-      name,
-      company,
-      role,
-      email,
-      phone,
-      message,
-    });
 
     const { error: sendError } = await resend.emails.send({
       from,
@@ -84,10 +66,6 @@ export async function POST(req: NextRequest) {
               <td style="padding: 8px 0;"><a href="mailto:${email}" style="color: #2d6060;">${email}</a></td>
             </tr>
             <tr>
-              <td style="padding: 8px 0; color: #666; vertical-align: top;">Telefon</td>
-              <td style="padding: 8px 0;"><a href="tel:${String(phone).replace(/[^+\d]/g, "")}" style="color: #2d6060;">${phone}</a></td>
-            </tr>
-            <tr>
               <td style="padding: 8px 0; color: #666; vertical-align: top;">Nachricht</td>
               <td style="padding: 8px 0; white-space: pre-wrap;">${message}</td>
             </tr>
@@ -104,8 +82,6 @@ export async function POST(req: NextRequest) {
         { status: 500 }
       );
     }
-
-    await propstackPromise; // Ergebnis wird nur geloggt, blockiert nichts fachlich
 
     return NextResponse.json({ success: true });
   } catch (error) {

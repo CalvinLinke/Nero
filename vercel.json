@@ -1,0 +1,8 @@
+{
+  "regions": ["fra1"],
+  "crons": [
+    { "path": "/api/orakel/cron", "schedule": "0 * * * *" },
+    { "path": "/api/orakel/cron", "schedule": "25 13 * * 1-5" },
+    { "path": "/api/orakel/cron", "schedule": "30 7 * * 5" }
+  ]
+}
