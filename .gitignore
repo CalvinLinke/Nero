@@ -34,3 +34,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Upload-Scripte (enthalten Token — nie committen)
+upload-to-github.js
+upload-to-github.sh
+
+# Orakel: lokale Testdatenbank
+/.orakel-db/
