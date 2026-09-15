@@ -21,6 +21,11 @@ async function open(): Promise<Db> {
     const { neon } = await import("@neondatabase/serverless");
     const { drizzle } = await import("drizzle-orm/neon-http");
     const db = drizzle(neon(url), { schema });
+    // Migrationen beim ersten Zugriff je Prozess anwenden; Drizzle merkt sich angewendete Stände in der Datenbank.
+    // So braucht das Einspielen keinen lokalen Zugriff auf die Verbindungs-URL.
+    const { migrate } = await import("drizzle-orm/neon-http/migrator");
+    const { join } = await import("node:path");
+    await migrate(db, { migrationsFolder: join(process.cwd(), "drizzle", "orakel") });
     return db as unknown as Db;
   }
   if (process.env.VERCEL) {
