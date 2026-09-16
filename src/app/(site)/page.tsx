@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import InvestmentCard from "@/components/ui/InvestmentCard";
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import HeroVideo from "@/components/ui/HeroVideo";
 
 const investments = [
   {
@@ -31,14 +32,7 @@ export default function HomePage() {
         {/* Bottom gradient: video → text section */}
         <div className="absolute bottom-0 left-0 right-0 h-80 bg-gradient-to-t from-nero-anthrazit to-transparent z-10 pointer-events-none" />
 
-        <video
-          autoPlay
-          muted
-          playsInline
-          className="w-full h-auto block"
-        >
-          <source src="/NERO-Hero%20neu2.mp4" type="video/mp4" />
-        </video>
+        <HeroVideo src="/NERO-Hero%20neu2.mp4" className="w-full h-auto block" />
       </section>
 
       {/* ── Hero Text ── */}
