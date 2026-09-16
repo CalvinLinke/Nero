@@ -7,10 +7,9 @@ type Props = {
   className?: string;
 };
 
-// Hero-Video, das bei jedem Seitenaufruf von vorn startet:
-// - beim Einhängen (Neuladen, Rückkehr über einen Link innerhalb der Seite)
-// - bei „pageshow" mit persisted=true (Browser-Zurück aus dem Seiten-Cache,
-//   bei dem der Browser das alte Videoelement samt Endposition wiederherstellt)
+// Hero-Video, das bei jedem Seitenaufruf von vorn startet und auf dem
+// iPhone auch dann anläuft, wenn der Browser das automatische Abspielen
+// blockiert (z. B. Stromsparmodus): dann startet es bei der ersten Berührung.
 export default function HeroVideo({ src, className }: Props) {
   const ref = useRef<HTMLVideoElement>(null);
 
@@ -18,15 +17,36 @@ export default function HeroVideo({ src, className }: Props) {
     const video = ref.current;
     if (!video) return;
 
+    let cleanupGesture: (() => void) | null = null;
+
+    const playOnFirstGesture = () => {
+      if (cleanupGesture) return;
+      const handler = () => {
+        video.play().catch(() => {});
+        cleanupGesture?.();
+      };
+      const opts: AddEventListenerOptions = { once: true, passive: true };
+      window.addEventListener("touchstart", handler, opts);
+      window.addEventListener("pointerdown", handler, opts);
+      window.addEventListener("scroll", handler, opts);
+      cleanupGesture = () => {
+        window.removeEventListener("touchstart", handler);
+        window.removeEventListener("pointerdown", handler);
+        window.removeEventListener("scroll", handler);
+        cleanupGesture = null;
+      };
+    };
+
     const restart = () => {
+      // Kein load(): das bricht auf iOS den bereits laufenden Autoplay ab.
       try {
-        video.pause();
         video.currentTime = 0;
-        video.load();
-        const p = video.play();
-        if (p && typeof p.catch === "function") p.catch(() => {});
       } catch {
-        // Autoplay kann vom Browser blockiert werden; dann bleibt das Standbild.
+        // Metadaten evtl. noch nicht geladen; dann startet es ohnehin bei 0.
+      }
+      const p = video.play();
+      if (p && typeof p.catch === "function") {
+        p.catch(() => playOnFirstGesture());
       }
     };
 
@@ -36,7 +56,10 @@ export default function HeroVideo({ src, className }: Props) {
       if (e.persisted) restart();
     };
     window.addEventListener("pageshow", onPageShow);
-    return () => window.removeEventListener("pageshow", onPageShow);
+    return () => {
+      window.removeEventListener("pageshow", onPageShow);
+      cleanupGesture?.();
+    };
   }, [src]);
 
   return (
@@ -46,7 +69,8 @@ export default function HeroVideo({ src, className }: Props) {
       muted
       playsInline
       preload="auto"
-      className={className}
+      disablePictureInPicture
+      className={`hero-video ${className ?? ""}`}
     >
       <source src={src} type="video/mp4" />
     </video>

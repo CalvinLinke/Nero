@@ -95,3 +95,13 @@ a, button, [role="button"], input, textarea, select, label {
 .input-underline::placeholder {
   color: #999;
 }
+
+/* Hero-Video: den großen Abspiel-Knopf von iOS ausblenden, wenn Autoplay
+   blockiert ist (Stromsparmodus). Das Video startet dann bei der ersten Berührung. */
+.hero-video::-webkit-media-controls,
+.hero-video::-webkit-media-controls-start-playback-button,
+.hero-video::-webkit-media-controls-panel {
+  display: none !important;
+  -webkit-appearance: none;
+  opacity: 0;
+}
